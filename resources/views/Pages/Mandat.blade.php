@@ -47,31 +47,35 @@
                         <th scope="col">Date</th>
                         <th scope="col">N° de mandat</th>
                         <th scope="col">PDF</th>
-                        <th scope="col">N° d'ordre</th>
                         <th scope="col">Nom du client</th>
                         <th scope="col">Honoraires soumis à la TVA</th>
                         <th scope="col">Honoraires d'expert</th>
                         <th scope="col">Frais annexes</th>
                         <th scope="col">Droits de suite et plus-value</th>
                         <th scope="col">Frais de publicité</th>
+                        <th scope="col">Quantité</th>
                         <th scope="col">Edit.</th>
                         <th scope="col">Suppr.</th>
                     </tr>
                     </thead>
                     <tbody>
+
+                        @foreach ($mandats as $mandat)
+                        <a href=>
                         <tr>
-                            <td>20/09/2022</td>
-                            <td>22-003</td>
-                            <td></td>
-                            <td>M. Robert Duval</td>
-                            <td>8%</td>
-                            <td>80 € HT</td>
-                            <td>120 € HT</td>
-                            <td>50 € HT</td>
-                            <td>5</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$mandat->created_at->isoFormat('DD/MM/YYYY')}}</td>
+                            <td><a onclick="window.location='{{url('/mandat/'.$mandat->id)}}'">{{$mandat->num_mandat}}</a></td>
+                            <td>{{$mandat->fichier_pdf}}</td>
+                            <td><a onclick="window.location='{{url('/mandat/'.$mandat->id)}}'">{{$mandat->client->nom}}</a></td>
+                            <td><a onclick="window.location='{{url('/mandat/'.$mandat->id)}}'">{{$mandat->honoraire_tva}}</a></td>
+                            <td><a onclick="window.location='{{url('/mandat/'.$mandat->id)}}'">{{$mandat->honoraire_expert}}</a></td>
+                            <td><a onclick="window.location='{{url('/mandat/'.$mandat->id)}}'">{{$mandat->frais_annexe}}</a></td>
+                            <td><a onclick="window.location='{{url('/mandat/'.$mandat->id)}}'">{{$mandat->droit_suite}}</a></td>
+                            <td><a onclick="window.location='{{url('/mandat/'.$mandat->id)}}'">{{$mandat->frais_pub}}</a></td>
+                            <td><a onclick="window.location='{{url('/mandat/'.$mandat->id)}}'">{{$mandat->quantite_bien}}</a></td>
                         </tr>
+                        </a>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
