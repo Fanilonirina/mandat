@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
+        Schema::create('biens', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('date_naissance');
-            $table->string('lieu_naissance');
-            $table->string('nationalite');
-            $table->string('adresse');
-            $table->string('tel');
+            $table->foreignId('client_id')->constrained();
+            $table->string('num_bien');
+            $table->string('designation');
+            $table->string('coast_reserve');
+            $table->string('recu');
+            $table->string('comment_bien');
+            $table->string('etat_bien');
             $table->timestamps();
             $table->engine = 'InnoDB';
         });
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('biens');
     }
 };

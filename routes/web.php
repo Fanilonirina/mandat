@@ -22,4 +22,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/mandat', [App\Http\Controllers\Mandats\MandatController::class, 'index'])->middleware('auth')->name('mandat');
+Route::get('/form_mandat', [App\Http\Controllers\Mandats\MandatController::class, 'affiche_form_mandat'])->middleware('auth');
 Route::get('/mandat/{id}', [App\Http\Controllers\Mandats\MandatController::class, 'get_mandat'])->middleware('auth');
